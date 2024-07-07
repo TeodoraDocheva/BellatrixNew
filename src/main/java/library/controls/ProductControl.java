@@ -1,11 +1,4 @@
-package library;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import utils.ControlFactory;
-
-import java.util.List;
+package library.controls;
 
 public class ProductControl  {
 //   private List<WebElement> controlElements;

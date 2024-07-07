@@ -1,4 +1,4 @@
-package Factory;
+package library.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,19 +6,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Cart {
+public class Cart extends PageWithCommonComponents {
 
     public static final String CART_URL = "https://demos.bellatrix.solutions/cart/";
-    private final WebDriver webDriver;
-    private final WebDriverWait wait;
 
-    public Cart(WebDriver driver) {
-        this.webDriver = driver;
-        this.wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(15));
-    }
-
-    public void navigateTo() {
-        this.webDriver.get(CART_URL);
+    public Cart(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public boolean isCartURLLoaded() {

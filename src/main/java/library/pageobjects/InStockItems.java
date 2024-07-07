@@ -1,5 +1,6 @@
-package library;
+package library.pageobjects;
 
+import library.pageobjects.AbstractProduct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,10 +1,11 @@
-import Factory.Cart;
-import Factory.HomePage;
-import Factory.MoreInfo;
-import library.ContactForm;
-import library.FormSectionWithName;
-import library.InStockItems;
-import library.OutOfStockItems;
+import library.pageobjects.FormSectionWithName;
+import library.pageobjects.FormSectionWithoutName;
+import library.pageobjects.InStockItems;
+import library.pageobjects.OutOfStockItems;
+import library.pages.Cart;
+import library.pages.HomePage;
+import library.pages.MoreInfoPage;
+import library.pages.ContactFormPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -69,7 +70,7 @@ public class AvailabilityTest extends BaseTest {
     public void readMoreTest() {
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
-        MoreInfo moreInfo = new MoreInfo(webDriver);
+        MoreInfoPage moreInfo = new MoreInfoPage(webDriver);
 
         OutOfStockItems item = homePage.productsList.getOutOfStockItemByName("Proton-M");
         item.clickImage();
@@ -82,7 +83,7 @@ public class AvailabilityTest extends BaseTest {
     public void clickOnPictureTest() {
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
-        MoreInfo moreInfo = new MoreInfo(webDriver);
+        MoreInfoPage moreInfo = new MoreInfoPage(webDriver);
 
         OutOfStockItems item = homePage.productsList.getOutOfStockItemByName("Proton-M");
         item.clickImage();
@@ -96,12 +97,17 @@ public class AvailabilityTest extends BaseTest {
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
         homePage.navigateToContactForm();
-        ContactForm contactForm = new ContactForm(webDriver);
+        ContactFormPage contactForm = new ContactFormPage(webDriver);
 
 
         FormSectionWithName firstNameSection = contactForm.getFormSectionWithName("Name *");
         firstNameSection.getControl("First").setData("Teodora");
-        firstNameSection.getControl("Last").setData("Teodora");
+        firstNameSection.getControl("Last").setData("Docheva");
+
+        FormSectionWithoutName firstNamelessSection = contactForm.getFormSectionWithName("Email *");
+        firstNamelessSection.getControl("Email *").setData("Docheva");
+
+
 
     }
 
@@ -111,13 +117,38 @@ public class AvailabilityTest extends BaseTest {
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
         homePage.navigateToContactForm();
-        ContactForm contactForm = new ContactForm(webDriver);
+        ContactFormPage contactForm = new ContactFormPage(webDriver);
 
-        for (var section : contactForm.getSectionsWithNames()) {
-            System.out.println(section.getSectionName());
-        }
+//       for (var section : contactForm.getSectionsWithNames()) {
+//           System.out.println(section.getSectionName());
+//           section.printElementLabels();
+//       }
+
 
     }
 
+    @Test
+    public void dummyTest2() throws Exception {
+        webDriver.get(HomePage.HOME_URL);
+        HomePage homePage = new HomePage(webDriver);
+        homePage.getNavigationMenu().navigateTo("Contact Form");
+        ContactFormPage contactForm = new ContactFormPage(webDriver);
+
+        var form = contactForm.getForm();
+        //  form.getSectionsWithNames().get(1).getControl("Bronze – $199.95").setData(true);
+
+
+//        for (var nameless : form.getNamelessSections()) {
+//            nameless.printElementLabels();
+//
+//        }
+//
+//        for (var sectionWithName : form.getSectionsWithNames()) {
+//            sectionWithName.printElementLabels();
+
+        //       }
+
+
+    }
 
 }

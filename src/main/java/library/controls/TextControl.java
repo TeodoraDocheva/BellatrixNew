@@ -1,10 +1,8 @@
-package library;
+package library.controls;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import javax.swing.*;
 
 public class TextControl extends FormControl {
     public TextControl(WebElement objectContainer, WebDriver driver) {

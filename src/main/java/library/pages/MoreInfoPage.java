@@ -1,4 +1,4 @@
-package Factory;
+package library.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,20 +6,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MoreInfo {
+public class MoreInfoPage extends PageWithCommonComponents {
 
     public static final String moreInfo_URL = "https://demos.bellatrix.solutions/product/proton-m/";
-    private final WebDriver webDriver;
 
-    private final WebDriverWait wait;
-
-    public MoreInfo(WebDriver driver) {
-        this.webDriver = driver;
-        this.wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(15));
-    }
-
-    public void navigateTo() {
-        this.webDriver.get(moreInfo_URL);
+    public MoreInfoPage(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public boolean isMoreInfoURLLoaded() {

@@ -1,6 +1,9 @@
-package utils;
+package library.controls.factory;
 
-import library.*;
+import library.controls.CheckBoxControl;
+import library.controls.FormControl;
+import library.controls.RadioButtonControl;
+import library.controls.TextControl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
