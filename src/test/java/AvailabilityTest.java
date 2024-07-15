@@ -94,18 +94,29 @@ public class AvailabilityTest extends BaseTest {
 
     @Test
     public void contactTest() throws Exception {
+
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
         homePage.navigateToContactForm();
         ContactFormPage contactForm = new ContactFormPage(webDriver);
 
+    //    FormSectionWithName nameSection = contactForm.getForm().getSectionsWithNames().get(0); // индекса е само на тези без име
+    //    nameSection.getControl("First").setData("Teodora");
+    //    nameSection.getControl("Last").setData("Docheva");
+     //   var form = contactForm.getForm();
 
-        FormSectionWithName firstNameSection = contactForm.getFormSectionWithName("Name *");
-        firstNameSection.getControl("First").setData("Teodora");
-        firstNameSection.getControl("Last").setData("Docheva");
+var radioButtonSection = contactForm.getFormSectionWithName("Which sessions do you plan on attending? *");
+       //  form.getSectionsWithNames().get(1).getControl("Bronze – $199.95").setData(true);
+      //  contactForm.getFormSectionWithName("Which access pass would you like to purchase? *").getControl("Bronze – $199.95").setData("true");
+     //   contactForm.getFormSectionWithName("Which sessions do you plan on attending? *").getControl("Session 1").setData("true");
 
-        FormSectionWithoutName firstNamelessSection = contactForm.getFormSectionWithName("Email *");
-        firstNamelessSection.getControl("Email *").setData("Docheva");
+        radioButtonSection.getControl("Session 1").setData("true");
+    //    radioButtonSection.getControl("Session 2").setData("true");
+    //    radioButtonSection.getControl("Session 3").setData("true");
+        radioButtonSection.getControl("Session 1").setData("false");
+        radioButtonSection.getControl("Session 1").setData("true");
+        radioButtonSection.getControl("Session 1").setData("false");
+  //      radioButtonSection.getControl("Session 1").setData("false");
 
 
 
@@ -134,8 +145,8 @@ public class AvailabilityTest extends BaseTest {
         homePage.getNavigationMenu().navigateTo("Contact Form");
         ContactFormPage contactForm = new ContactFormPage(webDriver);
 
-        var form = contactForm.getForm();
-        //  form.getSectionsWithNames().get(1).getControl("Bronze – $199.95").setData(true);
+        //var form = contactForm.getForm();
+        //form.getSectionsWithNames().get(1).getControl("Bronze – $199.95").setData(true);
 
 
 //        for (var nameless : form.getNamelessSections()) {

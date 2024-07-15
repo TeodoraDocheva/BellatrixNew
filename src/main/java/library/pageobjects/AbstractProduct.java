@@ -35,5 +35,4 @@ public abstract class AbstractProduct extends PageObject {
     public void clickPrice() {priceElement.click();}
 
 
-
 }

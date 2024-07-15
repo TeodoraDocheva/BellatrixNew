@@ -18,18 +18,14 @@ public class ControlFactory {
 
     public ControlFactory(List<WebElement> elements, WebDriver driver) {
         this.driver = driver;
-        controlElements = elements;  //this.
-
+        controlElements = elements;
     }
 
     public FormControl getControl(String controlName) throws Exception {
-
+        List<FormControl> allControls = getControls();
         FormControl control = null;
 
-        List<FormControl> allControls = getControls();
-
         for (FormControl controlElement : allControls) {
-
             String currentControlName = controlElement.getLabel();
             if (Objects.equals(currentControlName, controlName)) {
                 control = controlElement;
@@ -64,15 +60,12 @@ public class ControlFactory {
 
         switch (dataFormGroupType) {
 
-            case "text" :
+            case "text", "email":
                 control = new TextControl(element, driver);
                 break;
             case "checkbox" :
                 control = new CheckBoxControl(element, driver);
                 break;
-        //    case "email" :
-        //        control = new TextControl(element, driver);
-        //        break;
             case "radio" :
                 control = new RadioButtonControl(element, driver);
                 break;

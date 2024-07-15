@@ -9,33 +9,34 @@ import java.util.Objects;
 
 public class CheckBoxControl extends FormControl {
 
-    private List<WebElement> options = searchContext.findElements(By.cssSelector("div#wpforms-3347-field_4-container")); // locator
+   // private List<WebElement> options = searchContext.findElements(By.cssSelector("div#wpforms-3347-field_4-container"));
+
+    private WebElement inputElement = searchContext.findElement(By.cssSelector("input"));
 
     public CheckBoxControl(WebElement objectContainer, WebDriver driver) {
 
         super(objectContainer, driver);
     }
 
-
-
     @Override
     public void setData(String data) {
-        WebElement selectedOption = null;
-        for (WebElement option : options ) {
-            String tempName = option.getText();
+        boolean inputData = Boolean.parseBoolean(data);
+        boolean isSelected = inputElement.isSelected();
 
-            if (Objects.equals(tempName, data)) {
-                selectedOption = option;
+        if (inputData) {
+            if (isSelected == false) {
+                inputElement.click();
             }
         }
 
-        if (selectedOption == null) {
+        if (inputData == false) {
+            if (isSelected) {
+                inputElement.click();
+            }
 
-            throw new IllegalArgumentException("Option not found");
         }
+        System.out.println(isSelected);
 
-        WebElement checkboxButton = selectedOption.findElement(By.cssSelector("value"));
-        checkboxButton.click();
     }
 
 }

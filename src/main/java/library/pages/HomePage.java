@@ -16,14 +16,6 @@ public class HomePage extends PageWithCommonComponents {
         super(driver);
     }
 
-    public void navigateTo() {
-        this.driver.get(HOME_URL);
-    }
-
-    public boolean isURLLoaded() {
-        return wait.until(ExpectedConditions.urlToBe(HOME_URL));
-    }
-
     public ProductsList productsList = new ProductsList(productListElement, driver);
 
     public void navigateToContactForm() {
