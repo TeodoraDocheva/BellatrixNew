@@ -100,10 +100,11 @@ public class AvailabilityTest extends BaseTest {
         homePage.navigateToContactForm();
         ContactFormPage contactForm = new ContactFormPage(webDriver);
 
-    //    FormSectionWithName nameSection = contactForm.getForm().getSectionsWithNames().get(0); // индекса е само на тези без име
-    //    nameSection.getControl("First").setData("Teodora");
-    //    nameSection.getControl("Last").setData("Docheva");
-     //   var form = contactForm.getForm();
+
+        var nameSection = contactForm.getFormSectionWithName("Name *");
+                  nameSection.getControl("First").setData("Teodora");
+                  nameSection.getControl("Last").setData("Docheva");
+
 
 var radioButtonSection = contactForm.getFormSectionWithName("Which sessions do you plan on attending? *");
        //  form.getSectionsWithNames().get(1).getControl("Bronze – $199.95").setData(true);
@@ -124,6 +125,30 @@ var radioButtonSection = contactForm.getFormSectionWithName("Which sessions do y
 
 
     @Test
+    public void radioTest() throws Exception {
+        webDriver.get(HomePage.HOME_URL);
+        HomePage homePage = new HomePage(webDriver);
+        homePage.navigateToContactForm();
+        ContactFormPage contactForm = new ContactFormPage(webDriver);
+
+        var radioButtonSection = contactForm.getFormSectionWithName("Which sessions do you plan on attending? *");
+
+            contactForm.getFormSectionWithName("Which access pass would you like to purchase? *").getControl("Bronze – $199.95").setData("true");
+            contactForm.getFormSectionWithName("Which sessions do you plan on attending? *").getControl("Session 1").setData("true");
+
+        radioButtonSection.getControl("Session 1").setData("true");
+        radioButtonSection.getControl("Session 2").setData("true");
+        radioButtonSection.getControl("Session 3").setData("true");
+        radioButtonSection.getControl("Session 1").setData("false");
+        radioButtonSection.getControl("Session 1").setData("true");
+        radioButtonSection.getControl("Session 1").setData("false");
+        radioButtonSection.getControl("Session 1").setData("false");
+
+
+    }
+
+
+        @Test
     public void dummyTest() {
         webDriver.get(HomePage.HOME_URL);
         HomePage homePage = new HomePage(webDriver);
